@@ -13,34 +13,33 @@ use Symfony\Component\Console\Style\SymfonyStyle;
 
 class MakeLangfilesCommand extends ContainerAwareCommand
 {
-    protected static $defaultName = 'make-langfiles';
+	protected static $defaultName = 'make-langfiles';
 
-    protected function configure()
-    {
-        $this
-            ->setDescription('Create and update language files')
-            ->addArgument('lang', InputArgument::REQUIRED, 'Language code (e.g. en-GB)')
-        ;
-    }
+	protected function configure()
+	{
+		$this
+			->setDescription('Create and update language files')
+			->addArgument('lang', InputArgument::REQUIRED, 'Language code (e.g. en-GB)');
+	}
 
-    protected function execute(InputInterface $input, OutputInterface $output)
-    {
-        $io = new SymfonyStyle($input, $output);
+	protected function execute(InputInterface $input, OutputInterface $output)
+	{
+		$io = new SymfonyStyle($input, $output);
 
-	    $io->title('Make language files');
+		$io->title('Make language files');
 
-	    $rootDir = $this->getContainer()->get('kernel')->getProjectDir();
+		$rootDir = $this->getContainer()->get('kernel')->getProjectDir();
 
-	    $languageFile = (new LanguageFileType())
-		    ->setExtension('g11ntest')
-		    ->setDomain('domain')
-		    ->setLang($input->getArgument('lang'))
-	        ->setTemplatePath($rootDir . '/translations/template.pot');
+		$languageFile = (new LanguageFileType())
+			->setExtension('g11ntest')
+			->setDomain('domain')
+			->setLang($input->getArgument('lang'))
+			->setTemplatePath($rootDir . '/translations/template.pot');
 
-	    ExtensionHelper::addDomainPath('domain', $rootDir . '/translations');
+		ExtensionHelper::addDomainPath('domain', $rootDir . '/translations');
 
-	    (new G11nUtil($output->getVerbosity()))->processFiles($languageFile);
+		(new G11nUtil($output->getVerbosity()))->processFiles($languageFile);
 
-        $io->success('Language files created.');
-    }
+		$io->success('Language files created.');
+	}
 }
