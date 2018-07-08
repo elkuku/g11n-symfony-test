@@ -8,9 +8,7 @@ use ElKuKu\G11nUtil\Type\LanguageTemplateType;
 use League\Flysystem\Adapter\Local;
 use League\Flysystem\Filesystem;
 use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
-use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
@@ -23,10 +21,7 @@ class MakeTemplatesCommand extends ContainerAwareCommand
 
 	protected function configure()
 	{
-		$this
-			->setDescription('Add a short description for your command')
-			->addArgument('arg1', InputArgument::OPTIONAL, 'Argument description')
-			->addOption('option1', null, InputOption::VALUE_NONE, 'Option description');
+		$this->setDescription('Create and update language template files');
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
