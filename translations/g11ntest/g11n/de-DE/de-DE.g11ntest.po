@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: G11nTest \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-07-09 09:52-0500\n"
+"POT-Creation-Date: 2018-07-09 10:06-0500\n"
 "PO-Revision-Date: 2018-07-08 11:38-0500\n"
 "Last-Translator: Der Tester <test@test-virtualbox>\n"
 "Language-Team: Language de-DE\n"
@@ -20,14 +20,15 @@ msgstr ""
 msgid "Hello controller test!"
 msgstr "Hallo Controllertest"
 
-#: /templates/default/index.html.twig:12
+#: /templates/default/index.html.twig:3
+#: /templates/default/index.html.twig:11
 msgid "Hello %controller%!"
 msgstr "Hallo %controller%!"
 
-#: /templates/default/index.html.twig:15
+#: /templates/default/index.html.twig:13
 msgid "Current language: %lang%"
 msgstr "Aktuelle Sprache: %lang%"
 
-#: /templates/default/index.html.twig:19
+#: /templates/default/index.html.twig:17
 msgid "Hey Twig test"
 msgstr "Hallo Twigtest"
