@@ -71,7 +71,9 @@
     "post-update-cmd": [
       "@auto-scripts"
     ],
-    "tpl": "./vendor/bin/g11nutil make-t . src --template-path=translations/template.pot"
+    "template": "./bin/console make-templates",
+    "langfiles": "./bin/console make-langfiles de-DE en-US",
+    "lang": ["@template", "@langfiles"]
   },
   "conflict": {
     "symfony/symfony": "*"
