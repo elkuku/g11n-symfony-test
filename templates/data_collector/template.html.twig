@@ -1,0 +1,76 @@
+{% extends '@WebProfiler/Profiler/layout.html.twig' %}
+
+{% block toolbar %}
+    {% set icon %}
+        {# this is the content displayed as a panel in the toolbar #}
+        {{ include('data_collector/icon/translation.svg') }}
+        {% if collector.untranslateds %}
+            <span class="sf-toolbar-value sf-toolbar-status-yellow">{{ collector.untranslateds }}</span>
+        {% endif %}
+        <span class="sf-toolbar-value">{{ collector.translateds }}</span>
+
+    {% endset %}
+
+    {% set text %}
+        {# this is the content displayed when hovering the mouse over
+           the toolbar panel #}
+        <div class="sf-toolbar-info-piece">
+            <b>Strings</b>
+            {% if collector.untranslateds %}
+                <span class="sf-toolbar-value sf-toolbar-status-yellow">{{ collector.untranslateds }}</span>&nbsp;/&nbsp;
+            {% endif %}
+            <span class="sf-toolbar-value">{{ collector.translateds }}</span>
+        </div>
+    {% endset %}
+
+    {# the 'link' value set to 'false' means that this panel doesn't
+       show a section in the web profiler #}
+    {{ include('@WebProfiler/Profiler/toolbar_item.html.twig', { link: true }) }}
+{% endblock %}
+
+{% block head %}
+    {{ parent() }}
+    <style>
+        tr.warn td {
+            background-color: #ffee89;
+        }
+    </style>
+{% endblock %}
+
+{% block menu %}
+    {# This left-hand menu appears when using the full-screen profiler. #}
+    <span class="label">
+        <span class="icon">
+            {{ include('data_collector/icon/translation.svg') }}
+        </span>
+        <strong>G11n</strong>
+        {% if collector.untranslateds %}
+            &nbsp;<span class="sf-toolbar-value sf-toolbar-status-yellow">{{ collector.untranslateds }}</span>
+        {% endif %}
+    </span>
+{% endblock %}
+
+{% block panel %}
+    {# Optional, for showing the most details. #}
+    <h2>G11n Language Strings</h2>
+    <table>
+        <tr>
+            <th>Status</th>
+            <th>String</th>
+            <th>Args</th>
+        </tr>
+
+        {% for string in collector.strings %}
+            <tr{% if '-' == string.status %} class="warn"{% endif %}>
+                <td>{{ string.status }}</td>
+                <td>{{ string.string }}</td>
+                <td>{{ dump(string.args) }}</td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    {% if getLangDebug() %}
+        {{ g11nEventsTable() }}
+    {% endif %}
+
+{% endblock %}

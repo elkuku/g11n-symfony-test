@@ -32,3 +32,14 @@ services:
 
     App\EventSubscriber\G11nSubscriber:
         arguments: ['%kernel.project_dir%', 'en-GB']
+
+    App\DataCollector\G11nCollector:
+        tags:
+        -
+            name:     data_collector
+            template: 'data_collector/template.html.twig'
+          # must match the value returned by the getName() method
+            id:       'app.g11n_collector'
+      # optional priority
+      # priority: 300
+        public: false
