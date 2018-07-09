@@ -2,11 +2,11 @@
 
 namespace App\Controller;
 
+use App\Util\G11nController;
 use ElKuKu\G11n\G11n;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class DefaultController extends G11nController
 {
 	/**
 	 * @Route("/", name="default")

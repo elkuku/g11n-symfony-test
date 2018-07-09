@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello {{ controller_name }}!{% endblock %}
+{% block title %}{{ _('Hello %controller%!', {'%controller%': controller_name}) }}{% endblock %}
 
 {% block body %}
 <style>
@@ -8,12 +8,12 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}!</h1>
+    <h1>{{ _('Hello %controller%!', {'%controller%': controller_name}) }}</h1>
 
-    <h1>Current lang: {{ lang }}</h1>
+    <h2>{{ _('Current language: %lang%', {'%lang%': lang}) }}</h2>
 
-    <h2>{{ testMessage }}</h2>
+    <h3>{{ testMessage }}</h3>
 
-    <h2>{{ _('Hey Twig test') }}</h2>
+    <h4>{{ _('Hey Twig test') }}</h4>
 </div>
 {% endblock %}
