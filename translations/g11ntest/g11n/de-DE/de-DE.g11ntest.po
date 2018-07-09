@@ -1,0 +1,33 @@
+# Language de-DE translations for G11nTest package.
+# Copyright (C) 2018 G11nTest
+# This file is distributed under the same license as the G11nTest package.
+# Der Tester <test@test-virtualbox>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: G11nTest \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-09 09:52-0500\n"
+"PO-Revision-Date: 2018-07-08 11:38-0500\n"
+"Last-Translator: Der Tester <test@test-virtualbox>\n"
+"Language-Team: Language de-DE\n"
+"Language: de-DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=ASCII\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: /src/Controller/DefaultController.php:19
+msgid "Hello controller test!"
+msgstr "Hallo Controllertest"
+
+#: /templates/default/index.html.twig:12
+msgid "Hello %controller%!"
+msgstr "Hallo %controller%!"
+
+#: /templates/default/index.html.twig:15
+msgid "Current language: %lang%"
+msgstr "Aktuelle Sprache: %lang%"
+
+#: /templates/default/index.html.twig:19
+msgid "Hey Twig test"
+msgstr "Hallo Twigtest"
