@@ -15,11 +15,15 @@ class MakeLangfilesCommand extends ContainerAwareCommand
 {
 	protected static $defaultName = 'make-langfiles';
 
-	protected function configure()
+	protected function configure(): void
 	{
 		$this
 			->setDescription('Create and update language files')
-			->addArgument('lang', InputArgument::REQUIRED, 'Language code (e.g. en-GB)');
+			->addArgument(
+				'langs',
+				InputArgument::IS_ARRAY | InputArgument::REQUIRED,
+				'Language codes (e.g. en-GB)'
+			);
 	}
 
 	protected function execute(InputInterface $input, OutputInterface $output)
@@ -30,15 +34,22 @@ class MakeLangfilesCommand extends ContainerAwareCommand
 
 		$rootDir = $this->getContainer()->get('kernel')->getProjectDir();
 
+		$langs = $input->getArgument('langs');
+
+		$g11nUtil = new G11nUtil($output->getVerbosity());
+
 		$languageFile = (new LanguageFileType())
 			->setExtension('g11ntest')
 			->setDomain('domain')
-			->setLang($input->getArgument('lang'))
 			->setTemplatePath($rootDir . '/translations/template.pot');
 
 		ExtensionHelper::addDomainPath('domain', $rootDir . '/translations');
 
-		(new G11nUtil($output->getVerbosity()))->processFiles($languageFile);
+		foreach ($langs as $lang)
+		{
+			$languageFile->setLang($lang);
+			$g11nUtil->processFiles($languageFile);
+		}
 
 		$io->success('Language files created.');
 	}

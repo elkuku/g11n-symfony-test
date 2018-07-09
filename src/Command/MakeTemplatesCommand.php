@@ -19,7 +19,7 @@ class MakeTemplatesCommand extends ContainerAwareCommand
 {
 	protected static $defaultName = 'make-templates';
 
-	protected function configure()
+	protected function configure(): void
 	{
 		$this->setDescription('Create and update language template files');
 	}
