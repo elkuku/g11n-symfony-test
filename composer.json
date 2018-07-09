@@ -72,7 +72,7 @@
       "@auto-scripts"
     ],
     "template": "./bin/console make-templates",
-    "langfiles": "./bin/console make-langfiles de-DE en-US",
+    "langfiles": "./bin/console make-langfiles de-DE",
     "lang": ["@template", "@langfiles"]
   },
   "conflict": {
