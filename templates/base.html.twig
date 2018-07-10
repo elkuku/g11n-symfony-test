@@ -8,10 +8,5 @@
 <body>
 {% block body %}{% endblock %}
 {% block javascripts %}{% endblock %}
-
-{% if getLangDebug() %}
-    {{ g11nDebugTable() }}
-    {{ g11nEventsTable() }}
-{% endif %}
 </body>
 </html>

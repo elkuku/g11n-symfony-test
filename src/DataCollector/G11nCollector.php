@@ -28,6 +28,12 @@ class G11nCollector extends DataCollector
 	public function collect(Request $request, Response $response, \Exception $exception = null): void
 	{
 		$items = G11n::get('processedItems');
+		$events = [];
+
+		foreach (G11n::getEvents() as $event)
+		{
+			$events[] = (array) $event;
+		}
 
 		$translateds   = 0;
 		$untranslateds = 0;
@@ -66,6 +72,7 @@ class G11nCollector extends DataCollector
 		$this->data = array(
 			//'items' => $items,
 			'strings'       => $strings,
+			'events' => $events,
 			'translateds'   => $translateds,
 			'untranslateds' => $untranslateds,
 		);
@@ -84,5 +91,10 @@ class G11nCollector extends DataCollector
 	public function getStrings(): array
 	{
 		return $this->data['strings'];
+	}
+
+	public function getEvents(): array
+	{
+		return $this->data['events'];
 	}
 }
